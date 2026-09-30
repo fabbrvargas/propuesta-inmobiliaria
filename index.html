@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Splash Labs — fotografía, video con IA y videografía publicitaria para proyectos inmobiliarios.">
+<title>Splash Labs · Contenido inmobiliario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter+Tight:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --piedra:#EEE9E1;
+    --piedra-2:#E3DCD0;
+    --linea:#CFC6B7;
+    --tinta:#17150F;
+    --tinta-2:#5A554B;
+    --tinta-3:#8A8376;
+    --bronce:#94764A;
+    --noche:#12110E;
+    --noche-2:#1C1A16;
+    --noche-linea:#2E2B25;
+    --hueso:#EFE9DF;
+    --hueso-2:#A9A294;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --texto:'Inter Tight',system-ui,sans-serif;
+    --mono:'DM Mono',ui-monospace,monospace;
+    --max:1200px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--piedra);color:var(--tinta);font-family:var(--texto);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--bronce);color:#fff}
+  img,video{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+  @media(max-width:600px){.wrap{padding:0 18px}}
+
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.015em;line-height:1.02}
+  h1{font-size:clamp(46px,7.2vw,104px);letter-spacing:-.025em}
+  h2{font-size:clamp(38px,5.2vw,72px);margin-bottom:26px}
+  h3{font-size:clamp(28px,3vw,40px);margin-bottom:12px}
+  h1 i,h2 i,h3 i{font-style:italic;color:var(--bronce)}
+  p{color:var(--tinta-2);max-width:62ch}
+  p+p{margin-top:16px}
+  p strong{color:var(--tinta);font-weight:600}
+  .lead{font-size:clamp(19px,1.9vw,23px);line-height:1.5;color:var(--tinta)}
+  .etiqueta{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronce);display:flex;align-items:center;gap:12px;margin-bottom:26px}
+  .etiqueta::before{content:'';width:28px;height:1px;background:currentColor}
+
+  section{padding:130px 0;position:relative}
+  @media(max-width:720px){section{padding:90px 0}}
+  .oscura{background:var(--noche);color:var(--hueso)}
+  .oscura p{color:var(--hueso-2)}
+  .oscura p strong{color:var(--hueso)}
+  .oscura .lead{color:var(--hueso)}
+  .oscura h2 i,.oscura h3 i{color:#C9A871}
+  .oscura .etiqueta{color:#C9A871}
+
+  /* nav */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px 32px;transition:background .35s,padding .35s,border-color .35s;border-bottom:1px solid transparent}
+  nav.solida{background:rgba(238,233,225,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--linea);padding:13px 32px}
+  .marca{font-family:var(--texto);font-weight:600;font-size:16px;letter-spacing:-.01em;text-decoration:none;display:flex;align-items:center;gap:9px}
+  .marca span{width:9px;height:9px;border-radius:50%;background:var(--bronce)}
+  nav ul{display:flex;gap:28px;list-style:none;font-size:13.5px;font-weight:500}
+  nav ul a{text-decoration:none;opacity:.72}
+  nav ul a:hover{opacity:1}
+  @media(max-width:760px){nav ul{display:none}nav,nav.solida{padding-left:18px;padding-right:18px}}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--texto);font-weight:600;font-size:15px;padding:15px 24px;border-radius:999px;text-decoration:none;transition:transform .2s,background .2s,color .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-lleno{background:var(--tinta);color:var(--piedra)}
+  .btn-lleno:hover{background:var(--bronce)}
+  .btn-linea{border:1px solid var(--linea);color:var(--tinta)}
+  .btn-linea:hover{border-color:var(--tinta)}
+  .oscura .btn-lleno{background:var(--hueso);color:var(--noche)}
+  .oscura .btn-lleno:hover{background:#C9A871}
+
+  /* hero */
+  .hero{min-height:100svh;display:grid;align-items:center;padding:130px 0 90px}
+  .hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:center}
+  .hero-sub{margin-top:30px;font-size:clamp(18px,1.6vw,21px);max-width:46ch}
+  .hero-cta{margin-top:40px;display:flex;gap:12px;flex-wrap:wrap}
+  .hero-marco{position:relative;justify-self:end;width:min(100%,380px)}
+  .hero-marco video{width:100%;aspect-ratio:9/16;object-fit:cover;background:var(--piedra-2)}
+  .hero-marco::before{content:'';position:absolute;inset:-14px 14px 14px -14px;border:1px solid var(--linea);z-index:-1}
+  .pie{margin-top:14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--tinta-3);line-height:1.5}
+  @media(max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;gap:56px}
+    .hero-marco{justify-self:start;width:min(78%,340px);margin-left:14px}
+  }
+
+  /* criterio */
+  .tesis{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:80px}
+  .tres{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--linea)}
+  .tres > div{padding:34px 34px 0 0}
+  .tres > div + div{padding-left:34px;border-left:1px solid var(--linea)}
+  .num{font-family:var(--mono);font-size:12px;color:var(--bronce);letter-spacing:.1em;display:block;margin-bottom:18px}
+  .tres h3{font-size:clamp(26px,2.4vw,32px)}
+  @media(max-width:900px){
+    .tesis{grid-template-columns:1fr;gap:28px;margin-bottom:56px}
+    .tres{grid-template-columns:1fr}
+    .tres > div,.tres > div + div{padding:30px 0;border-left:0;border-bottom:1px solid var(--linea)}
+  }
+
+  /* experiencia */
+  .exp{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:center}
+  .mosaico{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .mosaico img{width:100%;aspect-ratio:4/5;object-fit:cover}
+  .mosaico img:nth-child(2){margin-top:48px}
+  .mosaico img:nth-child(3){margin-top:-48px}
+  .hechos{margin-top:40px;display:grid;gap:0;border-top:1px solid var(--noche-linea)}
+  .hechos div{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--noche-linea);font-size:15.5px}
+  .hechos dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#C9A871;padding-top:3px}
+  .hechos dd{color:var(--hueso)}
+  @media(max-width:900px){.exp{grid-template-columns:1fr;gap:56px}.hechos div{grid-template-columns:1fr;gap:4px}}
+
+  /* servicios */
+  .serv-cab{display:grid;grid-template-columns:120px 1fr;gap:40px;margin-bottom:64px}
+  .serv-num{font-family:var(--serif);font-size:clamp(64px,8vw,120px);line-height:.85;color:var(--bronce);font-style:italic}
+  .oscura .serv-num{color:#C9A871}
+  @media(max-width:720px){.serv-cab{grid-template-columns:1fr;gap:10px;margin-bottom:44px}}
+
+  .lista-tomas{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px;border-top:1px solid var(--linea)}
+  .lista-tomas > div{padding:22px 0;border-bottom:1px solid var(--linea);display:grid;grid-template-columns:34px 1fr;gap:12px}
+  .lista-tomas b{font-weight:600;display:block;margin-bottom:2px}
+  .lista-tomas span{font-size:15px;color:var(--tinta-2)}
+  .lista-tomas i{font-family:var(--mono);font-style:normal;font-size:12px;color:var(--bronce);padding-top:4px}
+  .puente{margin-top:48px;padding:28px 32px;background:var(--piedra-2);display:flex;gap:18px;align-items:flex-start}
+  .puente .flecha{font-family:var(--serif);font-size:34px;line-height:1;color:var(--bronce)}
+  .puente p{color:var(--tinta);max-width:none}
+  @media(max-width:720px){.lista-tomas{grid-template-columns:1fr}.puente{padding:22px}}
+
+  /* piezas de video */
+  .piezas{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .pieza{cursor:pointer}
+  .pieza .marco{position:relative;overflow:hidden;background:var(--noche-2)}
+  .pieza video{width:100%;aspect-ratio:9/16;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .pieza:hover video{transform:scale(1.02)}
+  .pieza.sonando:hover video{transform:none}
+  .play{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .3s;background:linear-gradient(to top,rgba(0,0,0,.35),transparent 45%)}
+  .play span{width:74px;height:74px;border-radius:50%;background:rgba(239,233,223,.92);display:grid;place-items:center;transition:transform .25s}
+  .pieza:hover .play span{transform:scale(1.07)}
+  .play svg{width:22px;height:22px;margin-left:4px;fill:var(--noche)}
+  .pieza.sonando .play{opacity:0;pointer-events:none}
+  .dur{position:absolute;left:14px;bottom:14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:#fff;transition:opacity .3s}
+  .pieza.sonando .dur{opacity:0}
+  .pieza h4{font-family:var(--serif);font-weight:500;font-size:26px;margin:20px 0 6px;line-height:1.1}
+  .pieza p{font-size:15px}
+  .pieza .tag{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C9A871;margin-top:18px;display:block}
+  @media(max-width:960px){.piezas{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.piezas{grid-template-columns:1fr}.pieza{max-width:360px}}
+
+  .ia-como{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:80px;border-top:1px solid var(--noche-linea)}
+  .ia-como div{padding:30px 30px 0 0}
+  .ia-como div + div{padding-left:30px;border-left:1px solid var(--noche-linea)}
+  .ia-como b{font-family:var(--serif);font-weight:500;font-size:24px;display:block;margin-bottom:8px;color:var(--hueso)}
+  .ia-como p{font-size:15.5px}
+  @media(max-width:900px){.ia-como{grid-template-columns:1fr}.ia-como div,.ia-como div + div{padding:24px 0;border-left:0;border-bottom:1px solid var(--noche-linea)}}
+
+  .video-uno{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+  .video-uno .pieza{max-width:400px}
+  .video-uno .pieza h4{color:var(--tinta)}
+  .video-uno .pieza .tag{color:var(--bronce)}
+  .formatos{margin-top:38px;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--linea)}
+  .formatos div{padding:20px 20px 20px 0;border-bottom:1px solid var(--linea)}
+  .formatos div:nth-child(even){padding-left:20px;border-left:1px solid var(--linea)}
+  .formatos b{display:block;font-weight:600;margin-bottom:2px}
+  .formatos span{font-size:14.5px;color:var(--tinta-2)}
+  @media(max-width:900px){.video-uno{grid-template-columns:1fr;gap:48px}}
+  @media(max-width:520px){.formatos{grid-template-columns:1fr}.formatos div:nth-child(even){padding-left:0;border-left:0}}
+
+  /* perfil */
+  .tabla{border-top:1px solid var(--linea);margin-top:20px}
+  .fila{display:grid;grid-template-columns:.8fr 1fr 1.2fr;gap:40px;padding:34px 0;border-bottom:1px solid var(--linea);align-items:start}
+  .fila.cab{padding:16px 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-3)}
+  .fila h3{font-size:clamp(26px,2.6vw,34px);margin:0}
+  .fila p{font-size:15.5px}
+  .fila .mejor{color:var(--tinta)}
+  .fila .mejor::before{content:'→ ';color:var(--bronce)}
+  @media(max-width:820px){.fila{grid-template-columns:1fr;gap:12px}.fila.cab{display:none}.fila p.antes::before{content:'Hoy: ';font-weight:600;color:var(--tinta)}}
+
+  /* proceso */
+  .pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:20px;counter-reset:p}
+  .paso{border-top:1px solid var(--noche-linea);padding-top:24px}
+  .paso .num{color:#C9A871}
+  .paso b{font-family:var(--serif);font-weight:500;font-size:25px;display:block;line-height:1.15;margin-bottom:10px;color:var(--hueso)}
+  .paso p{font-size:15px}
+  @media(max-width:900px){.pasos{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.pasos{grid-template-columns:1fr}}
+
+  /* cierre */
+  .cierre{text-align:center;padding:160px 0}
+  .cierre h2{max-width:16ch;margin:0 auto 28px}
+  .cierre p{margin:0 auto}
+  .cierre .hero-cta{justify-content:center}
+  footer{padding:36px 0;border-top:1px solid var(--linea);font-size:13px;color:var(--tinta-3)}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  .revela{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .revela.visible{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.revela{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="marca" href="#inicio"><span></span>Splash Labs</a>
+  <ul>
+    <li><a href="#criterio">Criterio</a></li>
+    <li><a href="#san-patricio">Experiencia</a></li>
+    <li><a href="#fotografia">Servicios</a></li>
+    <li><a href="#conversemos">Conversemos</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <div class="etiqueta">Contenido para proyectos inmobiliarios</div>
+      <h1>Un proyecto premium no se vende con contenido que <i>se ve barato.</i></h1>
+      <p class="hero-sub">Fotografía, video con inteligencia artificial y videografía publicitaria para que cada pieza de su perfil y de su pauta esté a la altura de lo que está construyendo.</p>
+      <div class="hero-cta">
+        <a class="btn btn-lleno" href="#conversemos">Conversemos</a>
+        <a class="btn btn-linea" href="#ia">Ver el trabajo</a>
+      </div>
+    </div>
+    <figure class="hero-marco">
+      <video src="videos/hero-loop.mp4" poster="img/poster-hero.jpg" autoplay muted loop playsinline preload="auto"></video>
+      <figcaption class="pie">San Patricio · Skypark<br>Video hecho con IA a partir de renders</figcaption>
+    </figure>
+  </div>
+</header>
+
+<!-- ============ CRITERIO ============ -->
+<section id="criterio">
+  <div class="wrap">
+    <div class="tesis revela">
+      <div>
+        <div class="etiqueta">Nuestro criterio</div>
+        <h2>El comprador visita su perfil <i>antes</i> que su sala de ventas.</h2>
+      </div>
+      <p class="lead">Cuando un proyecto es caro, la decisión empieza mucho antes de la visita: en un reel, en una historia, en un anuncio que aparece entre dos videos. Si esa primera impresión no transmite el mismo nivel que los acabados, el precio empieza a sentirse alto.</p>
+    </div>
+    <div class="tres revela">
+      <div>
+        <span class="num">01</span>
+        <h3>La percepción es parte del precio</h3>
+        <p>Luz, encuadre, ritmo y color le dicen al comprador cuánto vale lo que ve. Un contenido cuidado sostiene el ticket; uno improvisado lo pone en duda.</p>
+      </div>
+      <div>
+        <span class="num">02</span>
+        <h3>La pauta amplifica lo que ya es</h3>
+        <p>Invertir en anuncios con piezas débiles solo hace que más gente vea algo que no convence. La inversión rinde cuando la pieza ya está a la altura.</p>
+      </div>
+      <div>
+        <span class="num">03</span>
+        <h3>Una sola historia, de la obra a la vida adentro</h3>
+        <p>Avance de obra, proyecto terminado y lifestyle tienen que sentirse como la misma marca. Esa coherencia es la que construye confianza.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCIA ============ -->
+<section class="oscura" id="san-patricio">
+  <div class="wrap exp">
+    <div class="revela">
+      <div class="etiqueta">Experiencia</div>
+      <h2>Lo hacemos para <i>San Patricio.</i></h2>
+      <p class="lead">Producimos contenido para uno de los proyectos inmobiliarios más grandes del Ecuador.</p>
+      <p>Un proyecto de esa escala exige que cada pieza cuide el nivel de la marca: torres residenciales, oficinas, hospital, centro comercial y áreas verdes, contados con la misma calidad en el perfil y en la pauta.</p>
+      <dl class="hechos">
+        <div><dt>Con IA</dt><dd>Videos creados 100% con inteligencia artificial a partir de renders.</dd></div>
+        <div><dt>Frente a cámara</dt><dd>Videos con una presentadora frente a cámara, apoyados con material del proyecto.</dd></div>
+        <div><dt>Uso</dt><dd>Todas las piezas funcionan para pauta y para el perfil.</dd></div>
+      </dl>
+    </div>
+    <div class="mosaico revela">
+      <img src="img/still-dormitorio.jpg" alt="Dormitorio de departamento, video con IA para San Patricio" loading="lazy">
+      <img src="img/still-aerea.jpg" alt="Vista aérea del proyecto San Patricio" loading="lazy">
+      <img src="img/still-sala.jpg" alt="Sala de reuniones en torre de oficinas, video con IA" loading="lazy">
+      <img src="img/still-oficinas.jpg" alt="Oficinas habitadas, video con IA" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 FOTOGRAFÍA ============ -->
+<section id="fotografia">
+  <div class="wrap">
+    <div class="serv-cab revela">
+      <div class="serv-num">01</div>
+      <div>
+        <div class="etiqueta">Fotografía de proyecto</div>
+        <h2>Fotografía que hace sentir <i>el metro cuadrado.</i></h2>
+        <p class="lead">Fotografiamos el proyecto con criterio de arquitectura y de venta: dónde cae la luz, qué se ve desde la ventana, qué detalle justifica el precio.</p>
+      </div>
+    </div>
+    <div class="lista-tomas revela">
+      <div><i>A</i><div><b>Exteriores y fachadas</b><span>En el horario de luz que mejor muestra volumen, materiales y entorno.</span></div></div>
+      <div><i>B</i><div><b>Interiores terminados</b><span>Espacios amplios, bien iluminados y con la vista como protagonista.</span></div></div>
+      <div><i>C</i><div><b>Acabados y detalles</b><span>Materiales, griferías, texturas: los argumentos silenciosos del precio.</span></div></div>
+      <div><i>D</i><div><b>Amenidades</b><span>Gimnasio, lobby, terrazas, áreas comunales y áreas verdes.</span></div></div>
+      <div><i>E</i><div><b>Avance de obra</b><span>Registro periódico del proceso, cuidado para que también se vea sólido.</span></div></div>
+      <div><i>F</i><div><b>Lifestyle</b><span>Personas viviendo el proyecto: el departamento deja de ser un espacio y se vuelve un plan de vida.</span></div></div>
+    </div>
+    <div class="puente revela">
+      <span class="flecha">↓</span>
+      <p><strong>Cada fotografía también es materia prima.</strong> Con esas imágenes, o con los renders que ya tienen, producimos los videos con IA del siguiente punto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 IA ============ -->
+<section class="oscura" id="ia">
+  <div class="wrap">
+    <div class="serv-cab revela">
+      <div class="serv-num">02</div>
+      <div>
+        <div class="etiqueta">Video con inteligencia artificial</div>
+        <h2>De una imagen fija a un <i>recorrido cinematográfico.</i></h2>
+        <p class="lead">Partimos de las fotos que hagamos o de los renders que nos entreguen y los convertimos en video: cámara en movimiento, luz que cambia, espacios habitados. Incluso antes de que el proyecto esté terminado.</p>
+      </div>
+    </div>
+
+    <div class="piezas revela">
+      <article class="pieza">
+        <div class="marco">
+          <video src="videos/skypark.mp4" poster="img/poster-skypark.jpg" preload="none" playsinline></video>
+          <div class="play"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div>
+          <span class="dur">0:50</span>
+        </div>
+        <span class="tag">San Patricio · Residencial</span>
+        <h4>Skypark: recorrido interior</h4>
+        <p>Renders de departamentos y amenidades convertidos en un recorrido continuo, del ingreso a la habitación con vista.</p>
+      </article>
+      <article class="pieza">
+        <div class="marco">
+          <video src="videos/oficinas.mp4" poster="img/poster-oficinas.jpg" preload="none" playsinline></video>
+          <div class="play"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div>
+          <span class="dur">0:32</span>
+        </div>
+        <span class="tag">San Patricio · Oficinas</span>
+        <h4>Oficinas que ya se ven ocupadas</h4>
+        <p>De la planta vacía a equipos trabajando: el comprador ve el uso real del espacio, no solo el acabado.</p>
+      </article>
+      <article class="pieza">
+        <div class="marco">
+          <video src="videos/avance-obra.mp4" poster="img/poster-obra.jpg" preload="none" playsinline></video>
+          <div class="play"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div>
+          <span class="dur">0:30</span>
+        </div>
+        <span class="tag">San Patricio · Avance</span>
+        <h4>Del terreno al proyecto en marcha</h4>
+        <p>El avance del proyecto contado como una transformación: una pieza que transmite solidez y escala.</p>
+      </article>
+    </div>
+
+    <div class="ia-como revela">
+      <div><b>Vender antes de construir</b><p>Los renders dejan de ser imágenes estáticas en un catálogo y se convierten en piezas que se sienten reales.</p></div>
+      <div><b>Más piezas, mismo nivel</b><p>Un mismo set de imágenes permite producir variaciones para pauta, pruebas de mensaje y contenido constante en el perfil.</p></div>
+      <div><b>Control de marca</b><p>La IA la dirigimos nosotros: encuadre, ritmo, color y acabado final se cuidan como en cualquier producción.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 VIDEOGRAFÍA ============ -->
+<section id="videografia">
+  <div class="wrap">
+    <div class="serv-cab revela">
+      <div class="serv-num">03</div>
+      <div>
+        <div class="etiqueta">Videografía publicitaria</div>
+        <h2>Una voz que vende el proyecto, con <i>imagen de proyecto grande.</i></h2>
+        <p class="lead">Grabamos personas frente a cámara, asesores, voceros o talento, y las combinamos con material de apoyo del proyecto para piezas que explican, convencen y convierten.</p>
+      </div>
+    </div>
+    <div class="video-uno revela">
+      <article class="pieza">
+        <div class="marco">
+          <video src="videos/asesora.mp4" poster="img/poster-asesora.jpg" preload="none" playsinline></video>
+          <div class="play"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div>
+          <span class="dur">0:58</span>
+        </div>
+        <span class="tag">San Patricio · Frente a cámara</span>
+        <h4>Presentadora + material de apoyo</h4>
+      </article>
+      <div>
+        <p class="lead">En este video una presentadora recorre los argumentos del proyecto (accesos, centro comercial, hospital, calidad de construcción) mientras renders, tomas aéreas y gráficos de ubicación lo respaldan en pantalla.</p>
+        <p>Es un formato que funciona igual de bien en el perfil que en pauta: pone una cara de confianza al proyecto y ordena la información que un comprador necesita para dar el siguiente paso.</p>
+        <div class="formatos">
+          <div><b>Reels y anuncios 9:16</b><span>Pensados para retener desde el primer segundo.</span></div>
+          <div><b>Versiones 4:5 y 16:9</b><span>Feed, YouTube, web y pantallas en sala de ventas.</span></div>
+          <div><b>Cortes para pauta</b><span>Variaciones de gancho y duración para probar qué vende más.</span></div>
+          <div><b>Lifestyle y testimonios</b><span>Personas reales viviendo el proyecto.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SU PERFIL ============ -->
+<section style="background:var(--piedra-2)" id="perfil">
+  <div class="wrap">
+    <div class="revela">
+      <div class="etiqueta">Sobre su perfil</div>
+      <h2>Lo que ya muestran, <i>llevado un paso más allá.</i></h2>
+      <p class="lead">Ya tienen claros los temas correctos: obra, proyecto terminado y lifestyle. Nuestra propuesta es subir el nivel de cada uno.</p>
+    </div>
+    <div class="tabla revela">
+      <div class="fila cab"><span>Tipo de contenido</span><span>Hoy</span><span>Con Splash Labs</span></div>
+      <div class="fila">
+        <h3>Proceso de obra</h3>
+        <p class="antes">Registro del avance para mostrar que el proyecto se mueve.</p>
+        <p class="mejor">Avance contado como historia: fotografía periódica, tomas cuidadas y piezas con IA que conectan la obra con el render final.</p>
+      </div>
+      <div class="fila">
+        <h3>Interiores y exteriores</h3>
+        <p class="antes">Espacios terminados que muestran el producto.</p>
+        <p class="mejor">Fotografía de arquitectura con luz, encuadre y detalle que sostienen el precio, más recorridos en video que hacen sentir el espacio.</p>
+      </div>
+      <div class="fila">
+        <h3>Lifestyle</h3>
+        <p class="antes">Videos de personas viviendo dentro del proyecto.</p>
+        <p class="mejor">Producción publicitaria con dirección, talento y formatos listos para pauta, para que el estilo de vida se vea tan premium como el proyecto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section class="oscura" id="proceso">
+  <div class="wrap">
+    <div class="revela">
+      <div class="etiqueta">Cómo trabajamos</div>
+      <h2>Simple, ordenado y <i>a su ritmo.</i></h2>
+    </div>
+    <div class="pasos revela">
+      <div class="paso"><span class="num">01</span><b>Diagnóstico</b><p>Revisamos su perfil, su pauta y su material actual: qué funciona, qué le resta valor al proyecto.</p></div>
+      <div class="paso"><span class="num">02</span><b>Dirección visual</b><p>Definimos la línea: luz, color, ritmo y mensajes, para que todo se sienta de la misma marca.</p></div>
+      <div class="paso"><span class="num">03</span><b>Producción</b><p>Fotografía, video con IA y videografía, según lo que el proyecto necesite en cada etapa.</p></div>
+      <div class="paso"><span class="num">04</span><b>Piezas para vender</b><p>Entregamos en los formatos del perfil y de la pauta, listos para publicar y medir.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="cierre" id="conversemos">
+  <div class="wrap revela">
+    <div class="etiqueta" style="justify-content:center">Conversemos</div>
+    <h2>Su proyecto ya tiene el nivel. Hagamos que <i>se note.</i></h2>
+    <p class="lead">No venimos con una tarifa, venimos con una conversación: entender su proyecto, su momento de venta y lo que su contenido necesita.</p>
+    <div class="hero-cta">
+      <a class="btn btn-lleno" href="https://wa.me/593984712418?text=Hola%2C%20vi%20la%20propuesta%20de%20Splash%20Labs%20para%20proyectos%20inmobiliarios%20y%20me%20gustar%C3%ADa%20conversar." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      <a class="btn btn-linea" href="#ia">Ver los videos otra vez</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Splash Labs · Producción de contenido · Ecuador</span>
+    <span>Videos: trabajo realizado para San Patricio</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const alScroll = () => nav.classList.toggle('solida', scrollY > 40);
+  addEventListener('scroll', alScroll, {passive:true}); alScroll();
+
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  }), {threshold:.12});
+  document.querySelectorAll('.revela').forEach(el => io.observe(el));
+
+  // Algunos navegadores ignoran el atributo autoplay: se fuerza en silencio
+  const heroV = document.querySelector('.hero-marco video');
+  heroV.play().catch(() => {});
+
+  // Videos: uno a la vez, con sonido y controles al reproducir
+  const piezas = [...document.querySelectorAll('.pieza')];
+  piezas.forEach(p => {
+    const v = p.querySelector('video');
+    p.querySelector('.marco').addEventListener('click', () => {
+      if (p.classList.contains('sonando')) return;
+      piezas.forEach(o => { if (o !== p) { o.querySelector('video').pause(); } });
+      heroV.pause();
+      v.controls = true; v.muted = false;
+      p.classList.add('sonando');
+      v.play();
+    });
+    v.addEventListener('pause', () => { if (v.ended) { p.classList.remove('sonando'); v.controls = false; v.load(); } });
+    v.addEventListener('ended', () => { p.classList.remove('sonando'); v.controls = false; v.load(); });
+  });
+</script>
+</body>
+</html>
